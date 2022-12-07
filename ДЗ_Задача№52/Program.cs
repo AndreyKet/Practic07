@@ -1,4 +1,4 @@
-﻿// Задача 52. Задайте двумерный массив из целых чисел.
+// Задача 52. Задайте двумерный массив из целых чисел.
 // Найдите среднее арифметическое элементов в каждом столбце.
 
 // Например, задан массив:
@@ -32,17 +32,22 @@ void PrintArray(int[,] array)
 }
 PrintArray(array);
 
+if (column < (array.GetLength(0) + 1))
+{
 for (int i = 0; i < array.GetLength(0); i++)
 {
     for (int j = 0; j < array.GetLength(1); j++)
     {
-        if (j == column)
         {
-            sumAverage += array[i, j];
+            sumAverage += array[i, column];
             value++;
         }
+        }
     }
+    sumAverage = sumAverage / value;
+    Console.Write($"Average: {sumAverage}");
 }
-
-sumAverage = sumAverage / value;
-Console.Write($"Average: {sumAverage}");
+else
+{
+    Console.WriteLine("Такого столбца нет.");
+}
